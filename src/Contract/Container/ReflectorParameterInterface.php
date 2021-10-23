@@ -7,7 +7,7 @@ interface ReflectorParameterInterface {
 	 * Resolve parameter dari concrete class
 	 *
 	 * @param  array $_args
-	 * @return object
+	 * @return array
 	 */
-	public function resolve(array &$_args = []): object;
+	public function resolve(array &$_args = []): array;
 }
