@@ -1,0 +1,20 @@
+{
+	"name": "wipaaa/progress",
+	"description": "aplikasi pengelolaan data anggota ukm progress",
+	"type": "project",
+	"authors": [
+		{
+			"name": "wipaaa",
+			"email": "ini.wipaaa@gmail.com"
+		}
+	],
+	"minimum-stability": "stable",
+	"autoload": {
+		"psr-4": {
+			"Progress\\": "src/"
+		}
+	},
+	"require": {
+		"vlucas/phpdotenv": "^5.3"
+	}
+}
