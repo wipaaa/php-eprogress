@@ -103,7 +103,7 @@ class Route implements RouteInterface {
 	 */
 	public function resolve(array $_args): string {
 		return sprintf(
-			'%s/%s',
+			'%s%s',
 			BASE,
 			preg_replace_callback(
 				'/(?:\/\{([^}]+\??)\})/i',
