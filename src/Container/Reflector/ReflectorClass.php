@@ -23,7 +23,7 @@ class ReflectorClass implements ReflectorClassInterface {
 	 * @inheritdoc
 	 */
 	public function resolve(array &$_args = []): object {
-		if ($this->_reflector->hasMethod('__construct')) {
+		if (!$this->_reflector->hasMethod('__construct')) {
 			return $this->_reflector->newInstanceArgs([]);
 		}
 
