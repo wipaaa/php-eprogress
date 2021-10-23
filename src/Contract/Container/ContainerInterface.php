@@ -11,7 +11,7 @@ interface ContainerInterface {
 	 * @param  callable|object|string|null $_concrete
 	 * @return void
 	 */
-	public function bind(string $_name, $_concrete = null): void;
+	public function bind(string $_name, $_concrete = null): DefinitionInterface;
 
 	/**
 	 * Memanggil method pada concrete class di dalam container
@@ -42,9 +42,9 @@ interface ContainerInterface {
 	/**
 	 * Resolve concrete class dan mengaplikasikan autowiring dependencies
 	 *
-	 * @param  string $_class
+	 * @param  callable|object|string $_class
 	 * @param  array $_args
 	 * @return object
 	 */
-	public function resolve(string $_class, array $_args = []): object;
+	public function resolve(mixed $_class, array $_args = []): object;
 }
