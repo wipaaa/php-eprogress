@@ -5,10 +5,10 @@
 
 	# Rewrite engine and base path
 	RewriteEngine On
-	RewriteBase /ukk/public
+	RewriteBase /progress/public
 
 	# Rewrite URL fallback
 	RewriteCond %{REQUEST_FILENAME} !-d
-	RewriteCond %{REQUEST_FILENAME} !-f
-	RewriteRule ^(.+)$ index.php?url=$1 [QSA,L]
+    RewriteCond %{REQUEST_FILENAME} !-f
+    RewriteRule ^(.+)$ index.php?url=$1 [QSA,L]
 </IfModule>
