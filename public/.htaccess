@@ -1,0 +1,14 @@
+<IfModule mod_rewrite.c>
+	<IfModule mod_negotiation.c>
+		Options -Indexes -Multiviews
+	</IfModule>
+
+	# Rewrite engine and base path
+	RewriteEngine On
+	RewriteBase /ukk/public
+
+	# Rewrite URL fallback
+	RewriteCond %{REQUEST_FILENAME} !-d
+	RewriteCond %{REQUEST_FILENAME} !-f
+	RewriteRule ^(.+)$ index.php?url=$1 [QSA,L]
+</IfModule>
