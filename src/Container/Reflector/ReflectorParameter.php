@@ -33,7 +33,7 @@ class ReflectorParameter implements ReflectorParameterInterface {
 					case $this->isOptional($_parameter):
 						return $this->getOptional($_parameter);
 					case $this->isRequired($_parameter):
-						return $this->getRequired($_parameter);
+						return $this->getRequired($_parameter, $_args);
 					default:
 						throw new NotFoundException(sprintf(
 							"Can't resolve parameter %s at %s::%s",
