@@ -4,7 +4,7 @@ namespace Progress\Container\Definition;
 
 use Progress\Contract\Container\DefinitionInterface;
 
-class Defintion implements DefinitionInterface {
+class Definition implements DefinitionInterface {
 	/**
 	 * Nama dari stored concrete class
 	 *
@@ -109,7 +109,7 @@ class Defintion implements DefinitionInterface {
 	 * @inheritdoc
 	 */
 	public function setResolved(object $_concrete): DefinitionInterface	{
-		$this->_concrete = $_concrete;
+		$this->_resolved = $_concrete;
 		return $this;
 	}
 

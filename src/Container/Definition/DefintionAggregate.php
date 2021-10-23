@@ -29,7 +29,7 @@ class DefintionAggregate implements DefinitionAggregateInterface {
 		string $_name,
 		mixed $_concrete
 	): DefinitionInterface {
-		$_definition = new Defintion($_name, $_concrete);
+		$_definition = new Definition($_name, $_concrete);
 
 		$this->_definitions[] = $_definition
 			->setParams([])
