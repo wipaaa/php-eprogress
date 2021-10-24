@@ -177,7 +177,7 @@ if (!function_exists('css')) {
 	 */
 	function css(string $_name) {
 		return sprintf(
-			BASE . '/public/css/%s',
+			BASE . '/public/css/%s.css',
 			str_replace('.', '/', $_name)
 		);
 	}
@@ -216,8 +216,6 @@ if (!function_exists('env')) {
 	 */
 	function env(?string $_name = null, mixed $_default = null) {
 		$_env = Container::make(Env::class);
-
-		var_dump('hello world');
 
 		if (is_array($_name)) {
 			foreach ($_name as $_k => $_v) {
@@ -274,7 +272,7 @@ if (!function_exists('js')) {
 	 */
 	function js(string $_name) {
 		return sprintf(
-			BASE . '/public/js/%s',
+			BASE . '/public/js/%s.js',
 			str_replace('.', '/', $_name)
 		);
 	}
