@@ -19,6 +19,13 @@ class View implements ViewInterface {
 			$_config->get('view.path'),
 			$_config->get('view.cache')
 		);
+
+		$this->_blade->directive('method', function ($_expr) {
+			return sprintf(
+				'<input type="hidden" name="_method" value="%s" />',
+				trim($_expr, '\'"')
+			);
+		});
 	}
 
 	/**

@@ -83,7 +83,7 @@ class Route implements RouteInterface {
 	 * @inheritdoc
 	 */
 	public function match(RequestInterface $_request): bool {
-		if ($this->_method !== $_request->getMethod()) {
+		if ($this->_method !== strtoupper($_request->getMethod())) {
 			return false;
 		}
 
