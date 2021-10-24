@@ -27,6 +27,21 @@ if (!function_exists('app')) {
     }
 }
 
+if (!function_exists('asset')) {
+	/**
+	 * Asset url
+	 *
+	 * @param  string $_name
+	 * @return string
+	 */
+	function asset(string $_name) {
+		return sprintf(
+			BASE . '/public/asset/%s',
+			str_replace('.', '/', $_name)
+		);
+	}
+}
+
 if (!function_exists('arrayForget')) {
     /**
      * Menghapus value dari sebuah array dengan notasi titik
@@ -153,6 +168,44 @@ if (!function_exists('config')) {
 	}
 }
 
+if (!function_exists('css')) {
+	/**
+	 * CSS url
+	 *
+	 * @param  string $_name
+	 * @return string
+	 */
+	function css(string $_name) {
+		return sprintf(
+			BASE . '/public/css/%s',
+			str_replace('.', '/', $_name)
+		);
+	}
+}
+
+if (!function_exists('cookie')) {
+	/**
+	 * Memanipulasi cookie
+	 *
+	 * @param  string|null $_name
+	 * @param  mixed $_default
+	 * @return mixed
+	 */
+	function cookie(?string $_name = null, mixed $_default = null) {
+		$_cookie = Container::make(Cookie::class);
+
+		if (is_array($_name)) {
+			foreach ($_name as $_k => $_v) {
+				$_cookie->set($_k, $_v);
+			}
+		} elseif (is_null($_name)) {
+			return $_cookie;
+		}
+
+		return $_cookie->get($_name, $_default);
+	}
+}
+
 if (!function_exists('env')) {
 	/**
 	 * Meresolve data env
@@ -178,26 +231,69 @@ if (!function_exists('env')) {
 	}
 }
 
-if (!function_exists('cookie')) {
+if (!function_exists('error')) {
 	/**
-	 * Memanipulasi cookie
+	 * Mengembalikan error message pada session
 	 *
-	 * @param  string|null $_name
-	 * @param  mixed $_default
-	 * @return mixed
+	 * @param  string $_name
+	 * @return string
 	 */
-	function cookie(?string $_name = null, mixed $_default = null) {
-		$_cookie = Container::make(Cookie::class);
+	function error(string $_name) {
+		$_name = sprintf('error.%s', $_name);
+		$_message = session($_name);
 
-		if (is_array($_name)) {
-			foreach ($_name as $_k => $_v) {
-				$_cookie->set($_k, $_v);
-			}
-		} elseif (is_null($_name)) {
-			return $_cookie;
-		}
+		session()->forget($_name);
 
-		return $_cookie->get($_name, $_default);
+		return $_message;
+	}
+}
+
+if (!function_exists('flash')) {
+	/**
+	 * Mengembalikan flash message
+	 *
+	 * @param  string $_name
+	 * @return string
+	 */
+	function flash(string $_name) {
+		$_name = sprintf('flash.%s', $_name);
+		$_message = session($_name);
+
+		session()->forget($_name);
+
+		return $_message;
+	}
+}
+
+if (!function_exists('js')) {
+	/**
+	 * JS url
+	 *
+	 * @param  string $_name
+	 * @return string
+	 */
+	function js(string $_name) {
+		return sprintf(
+			BASE . '/public/js/%s',
+			str_replace('.', '/', $_name)
+		);
+	}
+}
+
+if (!function_exists('old')) {
+	/**
+	 * Mengembalikan old value
+	 *
+	 * @param  string $_name
+	 * @return string
+	 */
+	function old(string $_name) {
+		$_name = sprintf('old.%s', $_name);
+		$_message = session($_name);
+
+		session()->forget($_name);
+
+		return $_message;
 	}
 }
 
