@@ -4,7 +4,6 @@ namespace Progress\Base;
 
 use Progress\Container\Container;
 use Progress\Database\Database;
-use Progress\Database\Model;
 use Progress\Http\Input;
 use Progress\Http\Request;
 use Progress\Http\Response;
@@ -60,7 +59,6 @@ class Application {
 		$this->_container->bind(View::class)->setSingleton(true);
 
 		$this->_container->bind(Input::class);
-		// $this->_container->bind(Model::class);
 		$this->_container->bind(Request::class);
 		$this->_container->bind(Response::class);
 
