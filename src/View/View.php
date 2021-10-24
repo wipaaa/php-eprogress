@@ -7,6 +7,11 @@ use Progress\Base\Config;
 use Progress\Contract\View\ViewInterface;
 
 class View implements ViewInterface {
+	/**
+	 * Blade class instance
+	 *
+	 * @var Jenssegers\Blade\Blade
+	 */
 	private $_blade;
 
 	public function __construct(Config $_config) {
