@@ -53,7 +53,6 @@ class Application {
 		$this->_container->bind(Config::class)->setSingleton(true);
 		$this->_container->bind(Cookie::class)->setSingleton(true);
 		$this->_container->bind(Database::class)->setSingleton(true);
-		$this->_container->bind(Env::class)->setSingleton(true);
 		$this->_container->bind(Router::class)->setSingleton(true);
 		$this->_container->bind(Session::class)->setSingleton(true);
 		$this->_container->bind(View::class)->setSingleton(true);

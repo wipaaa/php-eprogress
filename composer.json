@@ -19,7 +19,6 @@
 		}
 	},
 	"require": {
-		"vlucas/phpdotenv": "^5.3",
 		"jenssegers/blade": "^1.4",
 		"aura/sqlquery": "^2.7"
 	}

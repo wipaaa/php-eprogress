@@ -206,29 +206,6 @@ if (!function_exists('cookie')) {
 	}
 }
 
-if (!function_exists('env')) {
-	/**
-	 * Meresolve data env
-	 *
-	 * @param  string|null $_name
-	 * @param  mixed $_default
-	 * @return mixed
-	 */
-	function env(?string $_name = null, mixed $_default = null) {
-		$_env = Container::make(Env::class);
-
-		if (is_array($_name)) {
-			foreach ($_name as $_k => $_v) {
-				$_env->set($_k, $_v);
-			}
-		} else if (is_null($_name)) {
-			return $_env;
-		}
-
-		return $_env->get($_name, $_default);
-	}
-}
-
 if (!function_exists('error')) {
 	/**
 	 * Mengembalikan error message pada session
