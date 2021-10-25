@@ -38,6 +38,13 @@ diatas.
 
 Barulah kita memigrasikan file SQL yang ada pada root folder kita dengan nama file `migration.sql`.
 
+Sebelum menjalankan jangan lupa untuk merubah file `.htaccess` di dalam folder `public`. Ganti root directory name nya sesuai dengan nama directory tempat kamu menyimpan project
+ini. Misalkan seperti dibawah ini:
+
+```apache
+RewriteBase /ganti_dengan_nama_root_dir/public # misalnya /progress/public
+```
+
 Selesai, kalian bisa menggunakan aplikasi dengan damai
 dan sedikit eksperimen.
 
