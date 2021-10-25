@@ -39,7 +39,7 @@ class Session implements SessionInterface {
 	/**
 	 * @inheritdoc
 	 */
-	public function get(string $_name, ?string $_default = null): mixed {
+	public function get(string $_name, mixed $_default = null): mixed {
 		return arrayGet($this->_repository, $_name, $_default);
 	}
 

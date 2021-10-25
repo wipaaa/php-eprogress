@@ -2,7 +2,9 @@
 
 namespace Progress\Http;
 
+use Progress\Base\Application;
 use Progress\Contract\Http\ResponseInterface;
+use Progress\Support\Session;
 
 class Response implements ResponseInterface {
 	/**
@@ -20,12 +22,16 @@ class Response implements ResponseInterface {
 	 * @inheritdoc
 	 */
 	public function back(?string $_fallback = null): ResponseInterface {
-		$_url = $this->_request->getHeader(
-			'http-referer',
-			$_fallback
-		);
+		$_url = Application::instance()
+			->make(Session::class)
+			->get('current', null)
+				?? 	$_SERVER['HTTP_REFERER']
+				?? 	$this->_request->getHeader(
+						'http-referer',
+						$_fallback
+					);
 
-		return $this->redirect($_url);
+		return $this->redirect(BASE . $_url);
 	}
 
 	/**
@@ -45,6 +51,10 @@ class Response implements ResponseInterface {
 	 * @inheritdoc
 	 */
 	public function with(string $_name, mixed $_value): ResponseInterface {
+		Application::instance()
+			->make(Session::class)
+			->set($_name, $_value);
+
 		return $this;
 	}
 }

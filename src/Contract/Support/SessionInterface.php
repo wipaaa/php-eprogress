@@ -29,10 +29,10 @@ interface SessionInterface {
 	 * Mengembalikan nilai session berdasarkan nama yang dipilih
 	 *
 	 * @param  string $_name
-	 * @param  string|null $_default
+	 * @param  mixed $_default
 	 * @return mixed
 	 */
-	public function get(string $_name, ?string $_default = null): mixed;
+	public function get(string $_name, mixed $_default = null): mixed;
 
 	/**
 	 * Memeriksa apakah data session ada

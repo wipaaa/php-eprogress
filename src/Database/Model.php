@@ -68,6 +68,32 @@ trait Model {
 			->fetchAll(static::class);
 	}
 
+	public function scopeCreate() {
+		$_query = $this->_query->insert
+			->into($this->_table)
+			->cols($this->_allow);
+
+		$this->_database->prepare($_query->getStatement());
+
+		foreach ($this->_allow as $_allowed) {
+			$this->_database->bind(':' . $_allowed, $this->{$_allowed});
+		}
+
+		return $this->_database->execute();
+	}
+
+	public function scopeDelete(mixed $_id, ?string $_col) {
+		$_col = is_null($_col) ? 'id' : $_col;
+		$_query = $this->_query->delete
+			->from($this->_table)
+			->where("{$_col} = :{$_col}");
+
+		return $this->_database
+			->prepare($_query->getStatement())
+			->bind(":{$_col}", $_id)
+			->execute();
+	}
+
 	/**
 	 * Mengambil sebagian data berdasarkan id pada database
 	 *
@@ -86,6 +112,29 @@ trait Model {
 			->prepare($_query->getStatement())
 			->bind($_col, $_id)
 			->fetch(static::class);
+	}
+
+	public function scopeSave() {
+		$_query = $this->_query->update
+			->table($this->_table)
+			->cols($this->_allow)
+			->where('id = :id');
+
+		$this->_database->prepare($_query->getStatement());
+		$this->_database->bind(':id', $this->id);
+
+		foreach ($this->_allow as $_allowed) {
+			$this->_database->bind(':' . $_allowed, $this->{$_allowed});
+		}
+
+		return $this->_database->execute();
+	}
+
+	public function __call(string $_name, array $_args) {
+		return call_user_func_array(
+			[$this, 'scope' . ucfirst($_name)],
+			$_args
+		);
 	}
 
 	public static function __callStatic(string $_name, array $_args) {

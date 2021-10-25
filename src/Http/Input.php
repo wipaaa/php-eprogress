@@ -58,6 +58,8 @@ class Input implements InputInterface {
 				return $_file;
 			}
 		}
+
+		return false;
 	}
 
 	/**

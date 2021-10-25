@@ -5,6 +5,7 @@ namespace Progress\Router;
 use Progress\Base\Application;
 use Progress\Contract\Http\RequestInterface;
 use Progress\Contract\Router\RouteInterface;
+use Progress\Support\Session;
 
 class Route implements RouteInterface {
 	/**
@@ -71,6 +72,10 @@ class Route implements RouteInterface {
 		$_action = $this->_action;
 		$_controller = $this->_controller;
 		$_params = array_slice($this->_params, 1) ?: [];
+
+		Application::instance()
+			->make(Session::class)
+			->set('current', $this->_path);
 
 		echo Application::instance()->call(
 			$_controller,

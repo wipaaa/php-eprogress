@@ -47,7 +47,7 @@ class Request implements RequestInterface {
 	 * @inheritdoc
 	 */
 	public function getFile(string $_name): mixed {
-		return $this->_input->file($_name);
+		return $this->_input->file($_name) ?? false;
 	}
 
 	/**

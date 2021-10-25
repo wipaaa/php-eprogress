@@ -37,7 +37,7 @@ if (!function_exists('asset')) {
 	function asset(string $_name) {
 		return sprintf(
 			BASE . '/public/asset/%s',
-			str_replace('.', '/', $_name)
+			$_name
 		);
 	}
 }
